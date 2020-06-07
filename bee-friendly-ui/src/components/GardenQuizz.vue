@@ -47,7 +47,7 @@
     export default {
         name: 'GardenQuizz',
         props: {
-            garden_size: String
+
         },
         data: function () {
             return {
@@ -82,11 +82,12 @@
                     timeout: 1000,
                     headers: {'jaeger-baggage': 'session=' + this.clientUUID + ', request=' + this.requestID}
                 })
+                var self = this
                 axios_instance
                     .post('flower_scorer', garden_data)
                     .then(response =>   {
                         console.log('Form has been posted', response)
-                        this.score = response.data["score"]
+                        self.score = response.data["score"]
                     })
                     .catch(err => {
                         console.log('An error occurred', err)
