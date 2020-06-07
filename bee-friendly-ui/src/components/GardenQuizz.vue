@@ -74,7 +74,7 @@
                 if (!this.formIsValid) return;
                 this.loading = true
                 var garden_data = {'selected_garden_size': this.garden_sizes.selected_garden_size}
-                var jaeger_baggage = {'jaeger-baggage': 'session=' + this.clientId + ', request=' + this.getRequestID()}
+                var jaeger_baggage = {'jaeger-baggage': 'session=' + this.clientId + ',request=garden_quizz' + this.getRequestID()}
 
                 const axios_instance = axios.create({
                     baseURL: 'http://localhost:3000',
@@ -86,6 +86,7 @@
                     .post('flower_scorer', garden_data)
                     .then(response =>   {
                         console.log('Form has been posted', response)
+                        self.errored = false
                         self.score = response.data["score"]
                     })
                     .catch(err => {

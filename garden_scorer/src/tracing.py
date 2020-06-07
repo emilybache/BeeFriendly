@@ -29,3 +29,19 @@ def flask_to_scope(flask_tracer, request):
         flask_tracer.get_span(request),
         False,
     )
+
+
+def parse_baggage(headers, scope):
+    baggage = headers.get("jaeger-baggage")
+    print(f"found baggage: {baggage}")
+
+    fields_as_dict = dict([f.split("=") for f in (baggage.split(","))])
+    print(f"parsed baggage: {fields_as_dict}")
+    if "session" in fields_as_dict.keys():
+        sessionId = fields_as_dict.get("session")
+        scope.span.set_tag("garden-session", sessionId)
+        print(f"set session {sessionId}")
+    if "request" in fields_as_dict.keys():
+        requestId = fields_as_dict.get("request")
+        scope.span.set_tag("quizz-request", requestId)
+        print(f"set request {requestId}")
