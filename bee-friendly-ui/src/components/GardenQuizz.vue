@@ -17,33 +17,37 @@
                     </div>
 
                     <div class="form-group">
-                        <label>Name:
-                            <input type="text" class="form-control"
-                            v-model="Name">
-                        </label>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Email:
-                            <input type="email" class="form-control"
-                            v-model="Email">
-                        </label>
-                    </div>
-
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button :disabled="!formIsValid"
+                                @click.prevent="onSubmit"
+                                type="submit"
+                                class="btn btn-primary">
+                            Submit
+                        </button>
                     </div>
                 </form>
+            </div>
+            <div>
+                <section v-if="errored">
+                    <p>We're sorry, we're not able to calculate your score at the moment, please try again later.</p>
+                </section>
+                <section v-else>
+                    <div v-if="loading">Loading...</div>
+                    <div v-else>
+                        <span>Your score: {{ score }}</span>
+                    </div>
+                </section>
+
             </div>
         </div>
     </div>
 </template>
 
 <script>
+    import axios from 'axios';
     export default {
-        name: 'HelloWorld',
+        name: 'GardenQuizz',
         props: {
-            msg: String
+
         },
         data: function () {
             return {
@@ -59,14 +63,29 @@
                         {text: "Extra Large > 100 m2", value: "xlarge"}
                     ]
                 },
-                Name: '',
-                Email: ''
+                score: "unknown",
+                loading: false,
+                errored: false
             }
         },
         methods: {
             onSubmit() {
                 if (!this.formIsValid) return;
                 console.log("form submit");
+                this.loading = true
+                axios
+                    .post('http://localhost:3000/flower_scorer', {
+                        params: this.form
+                    })
+                    .then(response =>   {
+                        console.log('Form has been posted', response)
+                        this.score = response.data["score"]
+                    })
+                    .catch(err => {
+                        console.log('An error occurred', err)
+                        this.errored = true
+                    })
+                    .finally( () => this.loading = false)
             }
         },
         computed: {

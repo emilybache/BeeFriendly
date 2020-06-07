@@ -3,16 +3,19 @@
     <img alt="Bee Friendly banner" src="./assets/azalea_banner.jpg">
     <HelloWorld msg="Bee Friendly"/>
     <GardenQuizz></GardenQuizz>
+    <NewsletterSignup></NewsletterSignup>
   </div>
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
 import GardenQuizz from './components/GardenQuizz.vue'
+import NewsletterSignup from "./components/NewsletterSignup";
 
 export default {
   name: 'App',
   components: {
+    NewsletterSignup,
     HelloWorld,
     GardenQuizz
   }
