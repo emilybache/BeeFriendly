@@ -47,7 +47,7 @@
     export default {
         name: 'GardenQuizz',
         props: {
-
+            garden_size: String
         },
         data: function () {
             return {
@@ -65,18 +65,25 @@
                 },
                 score: "unknown",
                 loading: false,
-                errored: false
+                errored: false,
+                clientUUID: "1234",
+                requestID: "request-1"
             }
         },
         methods: {
             onSubmit() {
                 if (!this.formIsValid) return;
-                console.log("form submit");
                 this.loading = true
-                axios
-                    .post('http://localhost:3000/flower_scorer', {
-                        params: this.form
-                    })
+                var garden_data = {'selected_garden_size': this.garden_sizes.selected_garden_size}
+                console.log("submitting garden data ")
+                console.log(garden_data)
+                const axios_instance = axios.create({
+                    baseURL: 'http://localhost:3000',
+                    timeout: 1000,
+                    headers: {'jaeger-baggage': 'session=' + this.clientUUID + ', request=' + this.requestID}
+                })
+                axios_instance
+                    .post('flower_scorer', garden_data)
                     .then(response =>   {
                         console.log('Form has been posted', response)
                         this.score = response.data["score"]

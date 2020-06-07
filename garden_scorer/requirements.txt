@@ -1,0 +1,10 @@
+
+requests
+flask
+sqlalchemy==1.2.10
+PyMySQL==0.7.11
+tornado
+jaeger-client
+opentracing_instrumentation
+Flask-Opentracing
+flask-cors
