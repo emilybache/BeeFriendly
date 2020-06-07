@@ -2,12 +2,13 @@
     <div id="app" class="container py-4">
         <div class="row">
             <div class="col-12">
-                <form>
+                <form @submit.prevent="onSubmit">
                     <div class="form-group">
                         <label>
                             Size of garden:
                             <select v-model="garden_sizes.selected_garden_size">
-                                <option v-for="(option, index) in garden_sizes.options" v-bind:key="index" v-bind:value="option.value">
+                                <option v-for="(option, index) in garden_sizes.options" v-bind:key="index"
+                                        v-bind:value="option.value">
                                     {{ option.text }}
                                 </option>
                             </select>
@@ -16,13 +17,17 @@
                     </div>
 
                     <div class="form-group">
-                        <label>Name:</label>
-                        <input type="text" class="form-control">
+                        <label>Name:
+                            <input type="text" class="form-control"
+                            v-model="Name">
+                        </label>
                     </div>
 
                     <div class="form-group">
-                        <label>Email:</label>
-                        <input type="email" class="form-control">
+                        <label>Email:
+                            <input type="email" class="form-control"
+                            v-model="Email">
+                        </label>
                     </div>
 
                     <div class="form-group">
@@ -45,15 +50,30 @@
                 garden_sizes: {
                     selected_garden_size: "",
                     options: [
-                        { text: "Please select one", value: ""},
-                        { text: "Windowbox", value: "windowbox"},
-                        { text: "Balcony", value: "balcony"},
-                        { text: "Small < 15 m2", value: "small"},
-                        { text: "Medium < 50 m2", value: "medium"},
-                        { text: "Large < 100 m2", value: "large"},
-                        { text: "Extra Large > 100 m2", value: "xlarge"}
+                        {text: "Please select one", value: ""},
+                        {text: "Windowbox", value: "windowbox"},
+                        {text: "Balcony", value: "balcony"},
+                        {text: "Small < 15 m2", value: "small"},
+                        {text: "Medium < 50 m2", value: "medium"},
+                        {text: "Large < 100 m2", value: "large"},
+                        {text: "Extra Large > 100 m2", value: "xlarge"}
                     ]
-                }
+                },
+                Name: '',
+                Email: ''
+            }
+        },
+        methods: {
+            onSubmit() {
+                if (!this.formIsValid) return;
+                console.log("form submit");
+            }
+        },
+        computed: {
+            formIsValid() {
+                return (
+                    this.garden_sizes.selected_garden_size.length > 0
+                );
             }
         }
 
