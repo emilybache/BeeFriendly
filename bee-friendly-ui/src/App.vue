@@ -2,8 +2,11 @@
   <div id="app">
     <img alt="Bee Friendly banner" src="./assets/azalea_banner.jpg">
     <HelloWorld msg="Bee Friendly"/>
-    <GardenQuizz></GardenQuizz>
+    <GardenQuizz :client-id="clientUUID"></GardenQuizz>
     <NewsletterSignup></NewsletterSignup>
+    <div>
+      client-id: {{ clientUUID }}
+    </div>
   </div>
 </template>
 
@@ -18,6 +21,11 @@ export default {
     NewsletterSignup,
     HelloWorld,
     GardenQuizz
+  },
+  data: function () {
+    return {
+      clientUUID: Math.round(Math.random() * 10000)
+    }
   }
 }
 </script>

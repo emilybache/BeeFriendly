@@ -47,7 +47,7 @@
     export default {
         name: 'GardenQuizz',
         props: {
-
+            clientId: Number
         },
         data: function () {
             return {
@@ -66,8 +66,7 @@
                 score: "unknown",
                 loading: false,
                 errored: false,
-                clientUUID: "1234",
-                requestID: "request-1"
+                lastRequestID: 0
             }
         },
         methods: {
@@ -75,12 +74,12 @@
                 if (!this.formIsValid) return;
                 this.loading = true
                 var garden_data = {'selected_garden_size': this.garden_sizes.selected_garden_size}
-                console.log("submitting garden data ")
-                console.log(garden_data)
+                var jaeger_baggage = {'jaeger-baggage': 'session=' + this.clientId + ', request=' + this.getRequestID()}
+
                 const axios_instance = axios.create({
                     baseURL: 'http://localhost:3000',
                     timeout: 1000,
-                    headers: {'jaeger-baggage': 'session=' + this.clientUUID + ', request=' + this.requestID}
+                    headers: jaeger_baggage
                 })
                 var self = this
                 axios_instance
@@ -91,9 +90,13 @@
                     })
                     .catch(err => {
                         console.log('An error occurred', err)
-                        this.errored = true
+                        self.errored = true
                     })
-                    .finally( () => this.loading = false)
+                    .finally( () => self.loading = false)
+            },
+            getRequestID() {
+                this.lastRequestID += 1
+                return this.lastRequestID
             }
         },
         computed: {
