@@ -23,16 +23,20 @@ def flower_scorer():
         parse_baggage(request.headers, scope)
         if request.method == 'POST':
             params = json.loads(request.data)
+            print(f"got form data {params.keys()}")
             garden_size = params['selected_garden_size']
-            score = calculate_score(garden_size)
+            flowers = params['selected_flowers']
+            score = calculate_score(garden_size, flowers)
             opentracing.tracer.active_span.set_tag('response', score)
             return jsonify({"score": score})
 
 
 
-def calculate_score(garden_size):
-    return f"Top marks! Bees love your {garden_size} garden."
+def calculate_score(garden_size, flowers):
+    if len(flowers) > 0:
+        return f"Top marks! Bees love your {garden_size} garden."
 
+    return f"you should plant some more flowers in your {garden_size} garden."
 
 if __name__ == "__main__":
     app.run(port=8080)

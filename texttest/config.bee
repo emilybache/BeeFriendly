@@ -8,6 +8,10 @@ filename_convention_scheme:standard
 # Expanded name to use for application
 full_name:BeeFriendly
 
+#use_case_record_mode:GUI
+#use_case_recorder:none
+#virtual_display_hide_windows:false
+
 [collate_file]
 start_page:start_page.html
 end_page:end_page.html

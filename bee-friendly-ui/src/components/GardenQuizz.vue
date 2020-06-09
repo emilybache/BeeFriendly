@@ -6,7 +6,7 @@
                     <div class="form-group">
                         <label>
                             Size of garden:
-                            <select v-model="garden_sizes.selected_garden_size">
+                            <select id="select-garden-size" v-model="garden_sizes.selected_garden_size">
                                 <option v-for="(option, index) in garden_sizes.options" v-bind:key="index"
                                         v-bind:value="option.value">
                                     {{ option.text }}
@@ -22,7 +22,7 @@
                                     <img :alt="flower.title" :src="getImageUrl(flower)" width="50">
                                     {{ flower.title }}
                                 </label>
-                                <input type="checkbox" v-model="checkedFlowers" :value="flower"/>
+                                <input :id="'checkbox_' + flower.name" type="checkbox" v-model="checkedFlowers" :value="flower.name"/>
                             </div>
                         </label>
 
@@ -31,7 +31,9 @@
                         <button :disabled="!formIsValid"
                                 @click.prevent="onSubmit"
                                 type="submit"
-                                class="btn btn-primary">
+                                class="btn btn-primary"
+                                id="submit-garden-quizz"
+                        >
                             Submit
                         </button>
                     </div>
@@ -95,9 +97,12 @@
             onSubmit() {
                 if (!this.formIsValid) return;
                 this.loading = true
-                var garden_data = {'selected_garden_size': this.garden_sizes.selected_garden_size}
+                var garden_data = {'selected_garden_size': this.garden_sizes.selected_garden_size,
+                                   'selected_flowers': this.checkedFlowers}
                 var jaeger_baggage = {'jaeger-baggage': 'session=' + this.clientId + ',request=garden_quizz' + this.getRequestID()}
 
+                console.log("garden flowers: ")
+                console.log(garden_data.selected_flowers)
                 const axios_instance = axios.create({
                     baseURL: 'http://localhost:3000',
                     timeout: 1000,

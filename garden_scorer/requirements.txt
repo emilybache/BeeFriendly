@@ -2,10 +2,10 @@
 requests
 flask
 SQLAlchemy>=1.3.0
-PyMySQL
+PyMySQL>=0.9.3
 tornado>=6
-jaeger-client
-opentracing_instrumentation
-Flask-Opentracing
+jaeger-client>=4.3.0
+opentracing_instrumentation>=3.2.1
+Flask-Opentracing>=1.1.0
 flask-cors
 selenium
