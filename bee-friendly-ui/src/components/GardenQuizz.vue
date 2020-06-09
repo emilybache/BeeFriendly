@@ -13,6 +13,18 @@
                                 </option>
                             </select>
                         </label>
+                    </div>
+                    <div>
+                        <label>
+                            Check all the flowers that are blooming:
+                            <div v-for="flower in flowers" :key="flower.name">
+                                <label>
+                                    <img :alt="flower.title" :src="getImageUrl(flower)" width="50">
+                                    {{ flower.title }}
+                                </label>
+                                <input type="checkbox" v-model="checkedFlowers" :value="flower"/>
+                            </div>
+                        </label>
 
                     </div>
                     <div class="form-group">
@@ -65,7 +77,18 @@
                 score: "unknown",
                 loading: false,
                 errored: false,
-                lastRequestID: 0
+                lastRequestID: 0,
+                checkedFlowers: [],
+                flowers: [
+                    {name: "azalea", title: "Azalea"},
+                    {name: "daisy", title: "Daisy"},
+                    {name: "forsythia", title: "Forsythia"},
+                    {name: "giant_daisy", title: "Giant Daisy"},
+                    {name: "lilac", title: "Lilac"},
+                    {name: "peony", title: "Peony"},
+                    {name: "rhododendron", title: "Rhododendron"},
+                    {name: "wild_strawberry", title: "Wild Strawberry"},
+                ]
             }
         },
         methods: {
@@ -97,7 +120,11 @@
             getRequestID() {
                 this.lastRequestID += 1
                 return this.lastRequestID
-            }
+            },
+            getImageUrl(flower) {
+                var images = require.context('../assets/', false, /\.jpg$/)
+                return images('./' + flower.name + ".jpg")
+            },
         },
         computed: {
             formIsValid() {
