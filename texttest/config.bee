@@ -1,0 +1,21 @@
+# Full path to the System Under Test (or Java Main Class name)
+executable:${TEXTTEST_HOME}/texttest/fixture.py
+interpreter:python3
+
+# Naming scheme to use for files for stdin,stdout and stderr
+filename_convention_scheme:standard
+
+# Expanded name to use for application
+full_name:BeeFriendly
+
+[collate_file]
+start_page:start_page.html
+end_page:end_page.html
+
+[collate_script]
+start_page:python3 ${TEXTTEST_HOME}/texttest/html2ascii/html2ascii.py
+end_page:python3 ${TEXTTEST_HOME}/texttest/html2ascii/html2ascii.py
+
+[run_dependent_text]
+start_page:client-id
+end_page:client-id
