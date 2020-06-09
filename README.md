@@ -35,4 +35,4 @@ Download and run jaeger using docker:
 
 ## Testing it
 
-When everything is started you should be able to open a browser on [http://localhost:8080](http://localhost:8080) and use the application.
+When everything is started you should be able to open a browser on [http://localhost:8080](http://localhost:8080) and use the application. You should be able to see tracing in [jaeger](http://localhost:16686/).

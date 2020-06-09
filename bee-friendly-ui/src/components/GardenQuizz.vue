@@ -15,7 +15,6 @@
                         </label>
 
                     </div>
-
                     <div class="form-group">
                         <button :disabled="!formIsValid"
                                 @click.prevent="onSubmit"
