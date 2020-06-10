@@ -2,9 +2,10 @@ import os
 import sys
 
 from selenium import webdriver
+from selenium.webdriver.common.by import By
 from selenium.webdriver.support.select import Select
 from selenium.webdriver.support.wait import WebDriverWait
-
+from selenium.webdriver.support import expected_conditions as EC
 
 def setup(url):
     global driver, orig_url
@@ -53,6 +54,12 @@ def select_flowers(flowers):
     for flower in flowers:
         checkbox_selector = driver.find_element_by_id(f"checkbox_{flower}")
         checkbox_selector.click()
+
+
+def wait_for_garden_quizz_response():
+    WebDriverWait(driver, 10).until_not(
+        EC.text_to_be_present_in_element((By.ID, "garden_advice"), "Loading...")
+    )
 
 
 def close():

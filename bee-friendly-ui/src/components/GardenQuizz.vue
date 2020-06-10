@@ -39,7 +39,7 @@
                     </div>
                 </form>
             </div>
-            <div>
+            <div id="garden_advice">
                 <section v-if="errored">
                     <p>We're sorry, we're not able to calculate your score at the moment, please try again later.</p>
                 </section>
