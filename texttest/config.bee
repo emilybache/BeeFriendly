@@ -12,6 +12,8 @@ full_name:BeeFriendly
 #use_case_recorder:none
 #virtual_display_hide_windows:false
 
+copy_test_path:use_case.py
+
 [collate_file]
 start_page:start_page.html
 end_page:end_page.html

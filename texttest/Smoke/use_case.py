@@ -1,6 +1,9 @@
-from fixture import *
+from step_definitions import *
 
-#garden_selector = Select(driver.find_element_by_id("select-garden-size"))
-#garden_selector.select_by_visible_text("Balcony")
-#submit_button = driver.find_element_by_id("submit-garden-quizz")
-#submit_button.click()
+print_html_page("start_page")
+
+select_garden_size("Balcony")
+select_flowers(["daisy", "rhododendron"])
+submit_garden_quizz()
+
+print_html_page("end_page")
