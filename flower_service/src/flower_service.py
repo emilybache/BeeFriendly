@@ -19,10 +19,7 @@ def get_flower_http(name):
     with flask_to_scope(flask_tracer, request) as scope:
         flower = Flower.get(name)
         if flower is None:
-            flower = Flower()
-            flower.name = name
-            current_month = datetime.today().strftime('%B')
-            flower.flowering_months = current_month.lower()
+            flower = create_flower(name)
 
         result = {
             'name': flower.name,
@@ -32,6 +29,16 @@ def get_flower_http(name):
 
         opentracing.tracer.active_span.log_kv(result)
         return json.dumps(result)
+
+
+def create_flower(name, now=None):
+    flower = Flower()
+    flower.name = name
+    if not now:
+        now = datetime.today()
+    current_month = now.strftime('%B')
+    flower.flowering_months = current_month.lower()
+    return flower
 
 
 if __name__ == "__main__":
