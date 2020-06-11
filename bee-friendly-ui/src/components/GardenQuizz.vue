@@ -90,8 +90,8 @@
                     {name: "giant_daisy", title: "Giant Daisy"},
                     {name: "lilac", title: "Lilac"},
                     {name: "peony", title: "Peony"},
-                    {name: "rhododendron", title: "Rhodo- dendron"},
-                    {name: "wild_strawberry", title: "Wild Strawberry"},
+                    {name: "rhododendron", title: "Rhododendron"},
+                    {name: "wild_strawberry", title: "Strawberry"},
                 ]
             }
         },
@@ -155,6 +155,7 @@
         cursor: pointer;
         color: white;
         font-weight: bold;
+        font-size: 0.9rem;
     }
     .flowerCheckbox:checked + .flowerLabel {
         border: solid 5px #00f;
