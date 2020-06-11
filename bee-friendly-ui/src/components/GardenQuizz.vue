@@ -18,7 +18,14 @@
                     <div>
                         <div class="d-inline ml-2" v-for="flower in flowers" :key="flower.name">
                             <input :id="'checkbox_' + flower.name" class="flowerCheckbox" type="checkbox" v-model="checkedFlowers" :value="flower.name"/>
-                            <label :for="'checkbox_' + flower.name" class="flowerLabel" v-bind:style="{backgroundImage: 'url('+getImageUrl(flower)+')'}"></label>
+                            <label :id="'label_' + flower.name"
+                                   :for="'checkbox_' + flower.name"
+                                   class="flowerLabel"
+                                   v-bind:style="{
+                                       backgroundImage: 'url('+getImageUrl(flower)+')'
+                                   }">
+
+                            </label>
                         </div>
                     </div>
                     <div class="form-group">

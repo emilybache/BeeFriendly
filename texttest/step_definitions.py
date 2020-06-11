@@ -52,7 +52,7 @@ def submit_garden_quizz():
 
 def select_flowers(flowers):
     for flower in flowers:
-        checkbox_selector = driver.find_element_by_id(f"checkbox_{flower}")
+        checkbox_selector = driver.find_element_by_id(f"label_{flower}")
         checkbox_selector.click()
 
 
