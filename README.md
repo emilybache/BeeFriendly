@@ -6,7 +6,7 @@ This application uses a microservices architecture. You can use it to try out te
 Starting all the services
 -------------------------
 
-Use a different command window for each one.
+Use a different command window for each one. 
 
 ## Front end
 
@@ -20,13 +20,20 @@ Then start the server:
 	npm run serve
 	
 
-## Garden Scorer
+## Garden Scorer, Users etc
 
-This is a python flask application:
+There are several python flask applications, named:
 
-	cd garden_scorer
-	export FLASK_APP=src/scorer.py
-	python3 -m flask run --port 3000
+- flower_service
+- garden_scorer
+- greeting
+- newsletter
+- users
+
+For each one, named $SERVICE_NAME, start them in a separate window like this:
+
+	cd $SERVICE_NAME/src
+	python3 -m $SERVICE_NAME
 
 ## Jaeger tracing
 
@@ -41,24 +48,32 @@ Download and run jaeger using docker:
 Alternatively, download jaeger binaries from [jaeger website](https://www.jaegertracing.io/download/).
 Start the jaeger-all-in-one binary.
 
-## Flower Service
+## databases
 
-Install mysql, and create the database 'flowerdb' using the script flower_service/database.sql. (The following instructions are for ec2 linux 2)
+Install mysql. (The following instructions are for ec2 linux 2)
 
     sudo yum install mysql mariadb-server
     sudo systemctl start mariadb
+
+Create the databases using the scripts in these services:
+
+- flowers
+- users
+
+For each one:
+
+    cd $SERVICE_NAME
     mysql -u root < database.sql
     
-Start the python flask application:
-
-	cd flower_service
-	export FLASK_APP=src/flower_service.py
-	python3 -m flask run --port 3001
-
 
 ## Testing it
 
 When everything is started you should be able to open a browser on [http://localhost:8080](http://localhost:8080) and use the application. You should be able to see tracing in [jaeger](http://localhost:16686/).
+You can also run the automated texttests. Open texttest in the same folder as this README:
+
+    texttest
+    
+Before the tests will pass you will need to start all the services.
 
 ## 3rd party software
 

@@ -1,7 +1,7 @@
 
 
-import scorer
-from scorer import calculate_score
+import garden_scorer
+from garden_scorer import calculate_score
 import pytest
 import requests
 

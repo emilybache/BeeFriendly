@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from flower_service import create_flower
+from flowers import create_flower
 
 
 def test_create_flower():
