@@ -6,20 +6,21 @@
                 <form @submit.prevent="onSubmit">
                     <div class="form-group">
                         <label>Name:
-                            <input type="text" class="form-control"
+                            <input id="newsletter_name" type="text" class="form-control"
                                    v-model="Name">
                         </label>
                     </div>
 
                     <div class="form-group">
                         <label>Email:
-                            <input type="email" class="form-control"
+                            <input id="newsletter_email" type="email" class="form-control"
                                    v-model="Email">
                         </label>
                     </div>
 
                     <div class="form-group">
-                        <button :disabled="!formIsValid"
+                        <button id="newsletter_submit"
+                                :disabled="!formIsValid"
                                 @click.prevent="onSubmit"
                                 type="submit"
                                 class="btn btn-primary">

@@ -62,5 +62,22 @@ def wait_for_garden_quizz_response():
     )
 
 
+def enter_contact_details(name, email):
+    name_field = driver.find_element_by_id("newsletter_name")
+    name_field.send_keys(name)
+    email_field = driver.find_element_by_id("newsletter_email")
+    email_field.send_keys(email)
+
+def submit_newsletter():
+    submit_button = driver.find_element_by_id("newsletter_submit")
+    submit_button.click()
+
+
+def wait_for_newsletter_response():
+    WebDriverWait(driver, 10).until_not(
+        EC.text_to_be_present_in_element((By.ID, "newsletter_greeting"), "Loading...")
+    )
+
+
 def close():
     driver.quit()
