@@ -1,7 +1,8 @@
 <template>
   <div id="app">
     <img alt="Bee Friendly banner" src="./assets/azalea_banner.jpg">
-    <HelloWorld msg="Bee Friendly"/>
+    <h1>Bee Friendly</h1>
+    We all need more flowers and pretty insects in our lives. Use this page to assess how best to help our small furry flying friends.
     <GardenQuizz :client-id="clientUUID"></GardenQuizz>
     <NewsletterSignup></NewsletterSignup>
     <div>
@@ -11,7 +12,6 @@
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 import GardenQuizz from './components/GardenQuizz.vue'
 import NewsletterSignup from "./components/NewsletterSignup";
 
@@ -19,7 +19,6 @@ export default {
   name: 'App',
   components: {
     NewsletterSignup,
-    HelloWorld,
     GardenQuizz
   },
   data: function () {

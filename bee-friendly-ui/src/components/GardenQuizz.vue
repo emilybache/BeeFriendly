@@ -18,11 +18,10 @@
                         <label>
                             Check all the flowers that are blooming:
                             <div v-for="flower in flowers" :key="flower.name">
-                                <label>
-                                    <img :alt="flower.title" :src="getImageUrl(flower)" width="50">
-                                    {{ flower.title }}
+                                <label class="label">
+                                    <img class="image" :alt="flower.title" :src="getImageUrl(flower)" width="50">
                                 </label>
-                                <input :id="'checkbox_' + flower.name" type="checkbox" v-model="checkedFlowers" :value="flower.name"/>
+                                <input class="david" :id="'checkbox_' + flower.name" type="checkbox" v-model="checkedFlowers" :value="flower.name"/>
                             </div>
                         </label>
 
@@ -141,5 +140,21 @@
 
     }
 </script>
+<style noscope>
+    .david {
+        width: 100px;
+        height: 100px;
+    }
+    .image {
+        border: solid 1px #00f;
+    }
+    .david:checked + .label {
+        border: solid 5px #00f;
+        cursor: pointer;
+        background-color: blue;
+        margin: 8px!important;
+    }
+</style>
+
 
 
