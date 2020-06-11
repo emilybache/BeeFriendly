@@ -23,8 +23,9 @@
                                    class="flowerLabel"
                                    v-bind:style="{
                                        backgroundImage: 'url('+getImageUrl(flower)+')'
-                                   }">
 
+                                   }">
+                                {{ flower.title }}
                             </label>
                         </div>
                     </div>
@@ -89,7 +90,7 @@
                     {name: "giant_daisy", title: "Giant Daisy"},
                     {name: "lilac", title: "Lilac"},
                     {name: "peony", title: "Peony"},
-                    {name: "rhododendron", title: "Rhododendron"},
+                    {name: "rhododendron", title: "Rhodo- dendron"},
                     {name: "wild_strawberry", title: "Wild Strawberry"},
                 ]
             }
@@ -152,6 +153,8 @@
         height: 100px;
         display: inline-block;
         cursor: pointer;
+        color: white;
+        font-weight: bold;
     }
     .flowerCheckbox:checked + .flowerLabel {
         border: solid 5px #00f;
