@@ -9,7 +9,7 @@ from flask_opentracing import FlaskTracer
 from datetime import datetime
 
 app = Flask('flower-service')
-init_tracer('garden-service')
+init_tracer('flower-service')
 #install_all_patches()
 flask_tracer = FlaskTracer(opentracing.tracer, True, app)
 
