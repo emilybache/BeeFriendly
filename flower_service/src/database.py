@@ -5,7 +5,7 @@ from sqlalchemy.schema import Column
 from sqlalchemy.types import String
 
 
-db_url = 'mysql+pymysql://root:mysqlpwd@localhost:3306/flowerdb'
+db_url = 'mysql+pymysql://root@localhost:3306/flowerdb'
 engine = create_engine(db_url, echo=False)
 Session = sessionmaker(bind=engine)
 session = Session()

@@ -1,10 +1,9 @@
 from flask import Flask
 from flask import request
 import json
-from .database import Flower
-from lib.tracing import init_tracer, flask_to_scope
+from tracing import init_tracer, flask_to_scope
+from database import Flower
 import opentracing
-from opentracing.ext import tags
 #from opentracing_instrumentation.client_hooks import install_all_patches
 from flask_opentracing import FlaskTracer
 

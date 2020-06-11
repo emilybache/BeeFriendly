@@ -41,6 +41,21 @@ Download and run jaeger using docker:
 Alternatively, download jaeger binaries from [jaeger website](https://www.jaegertracing.io/download/).
 Start the jaeger-all-in-one binary.
 
+## Flower Service
+
+Install mysql, and create the database 'flowerdb' using the script flower_service/database.sql. (The following instructions are for ec2 linux 2)
+
+    sudo yum install mysql mariadb-server
+    sudo systemctl start mariadb
+    mysql -u root < database.sql
+    
+Start the python flask application:
+
+	cd flower_service
+	export FLASK_APP=src/flower_service.py
+	python3 -m flask run --port 3001
+
+
 ## Testing it
 
 When everything is started you should be able to open a browser on [http://localhost:8080](http://localhost:8080) and use the application. You should be able to see tracing in [jaeger](http://localhost:16686/).
