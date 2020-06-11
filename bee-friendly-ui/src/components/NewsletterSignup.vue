@@ -50,7 +50,7 @@
     export default {
         name: 'NewsletterSignup',
         props: {
-
+            clientId: Number
         },
         data: function () {
             return {

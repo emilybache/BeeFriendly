@@ -4,7 +4,7 @@
     <h1 class="mt-4">Bee Friendly</h1>
     We all need more flowers and pretty insects in our lives. Use this page to assess how best to help our small furry flying friends.
     <GardenQuizz :client-id="clientUUID"></GardenQuizz>
-    <NewsletterSignup></NewsletterSignup>
+    <NewsletterSignup :client-id="clientUUID"></NewsletterSignup>
     <div>
       client-id: {{ clientUUID }}
     </div>
