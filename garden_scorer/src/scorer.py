@@ -31,12 +31,32 @@ def flower_scorer():
             return jsonify({"score": score})
 
 
+def fetch_flowering_months(flowers):
+    flowering_months = set()
+    for flower in flowers:
+        json_object = requests.get("http://localhost:3001/getFlower/" + flower).json()
+        flowering_months = flowering_months.union(json_object["flowering_months"])
+
+    return flowering_months
+
 
 def calculate_score(garden_size, flowers):
-    if len(flowers) > 0:
-        return f"Top marks! Bees love your {garden_size} garden."
+    if len(flowers) == 0:
+        return f"Our furry flying friends will be disappointed! You should plant some more flowers in your {garden_size} garden."
 
-    return f"you should plant some more flowers in your {garden_size} garden."
+    if garden_size == "windowbox":
+        return f"Top marks! Bees love your windowbox."
+    else:
+        flowering_months = fetch_flowering_months(flowers)
+        if "july" not in flowering_months and "august" not in flowering_months:
+            return f"Good work! Your garden would be even more friendly if you planted some flowers that bloom in " + get_months(flowering_months)
+        else:
+            return f"Top marks! Bees love your {garden_size} garden."
+
+
+
+def get_months(flowering_months):
+    return "July and August"
 
 if __name__ == "__main__":
     app.run(port=8080)
