@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <img alt="Bee Friendly banner" src="./assets/azalea_banner.jpg">
-    <h1>Bee Friendly</h1>
+    <h1 class="mt-4">Bee Friendly</h1>
     We all need more flowers and pretty insects in our lives. Use this page to assess how best to help our small furry flying friends.
     <GardenQuizz :client-id="clientUUID"></GardenQuizz>
     <NewsletterSignup></NewsletterSignup>

@@ -1,7 +1,7 @@
 <template>
-    <div id="app" class="container py-4">
+    <div id="app" class="container">
         <div class="row">
-            <span>Sign up for our newsletter!</span>
+            <h2 class="mx-auto">Sign up for our newsletter!</h2>
             <div class="col-12">
                 <form @submit.prevent="onSubmit">
                     <div class="form-group">
@@ -69,5 +69,3 @@
 
     }
 </script>
-
-
