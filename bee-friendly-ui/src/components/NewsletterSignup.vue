@@ -28,7 +28,18 @@
                     </div>
                 </form>
             </div>
+            <div id="newsletter_greeting" class="mx-auto">
+                <section v-if="errored">
+                    <p>We're sorry, we're not able to sign you up for the newsletter at the moment, please try again later.</p>
+                </section>
+                <section v-else>
+                    <div v-if="loading">Loading...</div>
+                    <div v-else>
+                        <span>{{ greeting }}</span>
+                    </div>
+                </section>
 
+            </div>
         </div>
     </div>
 </template>
@@ -43,20 +54,28 @@
         data: function () {
             return {
                 Name: '',
-                Email: ''
+                Email: '',
+                loading: false,
+                errored: false,
+                greeting: '',
             }
         },
         methods: {
             onSubmit() {
                 if (!this.formIsValid) return;
                 console.log("form submit");
+                this.loading = true
+                var self = this
                 axios
-                    .post('http://localhost:3001/newsletter', { params: this.form })
+                    .get('http://localhost:3000/sayHello/' + this.Name)
                     .then(response =>   {
                         console.log('Form has been posted', response);
+                        self.greeting = response.data
                     }).catch(err => {
-                    console.log('An error occurred', err);
-                });
+                        console.log('An error occurred', err);
+                        self.errored = true
+                    })
+                    .finally( () => self.loading = false);
             }
         },
         computed: {

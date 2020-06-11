@@ -4,13 +4,13 @@ import json
 from tracing import init_tracer, flask_to_scope
 from database import Flower
 import opentracing
-#from opentracing_instrumentation.client_hooks import install_all_patches
+from opentracing_instrumentation.client_hooks import install_all_patches
 from flask_opentracing import FlaskTracer
 from datetime import datetime
 
 app = Flask('flower-service')
 init_tracer('flower-service')
-#install_all_patches()
+install_all_patches()
 flask_tracer = FlaskTracer(opentracing.tracer, True, app)
 
 
@@ -42,4 +42,4 @@ def create_flower(name, now=None):
 
 
 if __name__ == "__main__":
-    app.run(port=8081)
+    app.run(port=3005)

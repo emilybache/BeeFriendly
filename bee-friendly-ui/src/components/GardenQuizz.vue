@@ -105,7 +105,7 @@
                 console.log("garden flowers: ")
                 console.log(garden_data.selected_flowers)
                 const axios_instance = axios.create({
-                    baseURL: 'http://localhost:3000',
+                    baseURL: 'http://localhost:3004',
                     timeout: 1000,
                     headers: jaeger_baggage
                 })

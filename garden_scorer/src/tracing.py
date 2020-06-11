@@ -17,7 +17,6 @@ def init_tracer(service):
             'reporter_batch_size': 1,
         },
         service_name=service,
-        validate=True,
     )
 
     # this call sets global variable opentracing.tracer
@@ -34,6 +33,9 @@ def flask_to_scope(flask_tracer, request):
 def parse_baggage(headers, scope):
     baggage = headers.get("jaeger-baggage")
     print(f"found baggage: {baggage}")
+
+    if not baggage:
+        return
 
     fields_as_dict = dict([f.split("=") for f in (baggage.split(","))])
     if "session" in fields_as_dict.keys():
