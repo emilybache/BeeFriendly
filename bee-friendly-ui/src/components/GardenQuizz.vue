@@ -1,12 +1,12 @@
 <template>
-    <div id="app" class="container py-4">
+    <div class="container mt-4">
         <div class="row">
             <div class="col-12">
                 <form @submit.prevent="onSubmit">
                     <div class="form-group">
                         <label>
                             Size of garden:
-                            <select id="select-garden-size" v-model="garden_sizes.selected_garden_size">
+                            <select id="select-garden-size" v-model="garden_sizes.selected_garden_size" class="selectpicker">
                                 <option v-for="(option, index) in garden_sizes.options" v-bind:key="index"
                                         v-bind:value="option.value">
                                     {{ option.text }}
@@ -14,17 +14,12 @@
                             </select>
                         </label>
                     </div>
+                    Check all the flowers that are blooming:
                     <div>
-                        <label>
-                            Check all the flowers that are blooming:
-                            <div v-for="flower in flowers" :key="flower.name">
-                                <label class="label">
-                                    <img class="image" :alt="flower.title" :src="getImageUrl(flower)" width="50">
-                                </label>
-                                <input class="david" :id="'checkbox_' + flower.name" type="checkbox" v-model="checkedFlowers" :value="flower.name"/>
-                            </div>
-                        </label>
-
+                        <div class="d-inline ml-2" v-for="flower in flowers" :key="flower.name">
+                            <input :id="'checkbox_' + flower.name" class="flowerCheckbox" type="checkbox" v-model="checkedFlowers" :value="flower.name"/>
+                            <label :for="'checkbox_' + flower.name" class="flowerLabel" v-bind:style="{backgroundImage: 'url('+getImageUrl(flower)+')'}"></label>
+                        </div>
                     </div>
                     <div class="form-group">
                         <button :disabled="!formIsValid"
@@ -38,7 +33,7 @@
                     </div>
                 </form>
             </div>
-            <div id="garden_advice">
+            <div id="garden_advice" class="mx-auto">
                 <section v-if="errored">
                     <p>We're sorry, we're not able to calculate your score at the moment, please try again later.</p>
                 </section>
@@ -141,20 +136,17 @@
     }
 </script>
 <style noscope>
-    .david {
+    .flowerCheckbox {
+      display:none;
+    }
+    .flowerLabel {
+        border: solid 1px #00f;
         width: 100px;
         height: 100px;
-    }
-    .image {
-        border: solid 1px #00f;
-    }
-    .david:checked + .label {
-        border: solid 5px #00f;
+        display: inline-block;
         cursor: pointer;
-        background-color: blue;
-        margin: 8px!important;
+    }
+    .flowerCheckbox:checked + .flowerLabel {
+        border: solid 5px #00f;
     }
 </style>
-
-
-
