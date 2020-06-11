@@ -4,7 +4,7 @@ USE flowerdb;
 
 CREATE TABLE IF NOT EXISTS flowerdb.flowers (
     name        VARCHAR(100),
-    flowering_months       VARCHAR(10),
+    flowering_months       VARCHAR(100),
     description VARCHAR(100),
     PRIMARY KEY (name)
 );

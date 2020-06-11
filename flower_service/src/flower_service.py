@@ -6,10 +6,10 @@ from database import Flower
 import opentracing
 #from opentracing_instrumentation.client_hooks import install_all_patches
 from flask_opentracing import FlaskTracer
-
+from datetime import datetime
 
 app = Flask('flower-service')
-init_tracer('flower-service')
+init_tracer('garden-service')
 #install_all_patches()
 flask_tracer = FlaskTracer(opentracing.tracer, True, app)
 
@@ -21,7 +21,8 @@ def get_flower_http(name):
         if flower is None:
             flower = Flower()
             flower.name = name
-            flower.flowering_months = "june"
+            current_month = datetime.today().strftime('%B')
+            flower.flowering_months = current_month.lower()
 
         result = {
             'name': flower.name,
