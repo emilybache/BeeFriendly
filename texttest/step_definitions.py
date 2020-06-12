@@ -23,6 +23,7 @@ def setup(url):
 
     driver = webdriver.Chrome(desired_capabilities=d)
     driver.get(url)
+    print_html_page("start_page")
 
 
 def print_html_page(page_name):
@@ -80,4 +81,5 @@ def wait_for_newsletter_response():
 
 
 def close():
+    print_html_page("end_page")
     driver.quit()
