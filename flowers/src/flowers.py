@@ -21,11 +21,14 @@ def get_flower_http(name):
         if flower is None:
             flower = create_flower(name)
 
-        result = {
-            'name': flower.name,
-            'flowering_months': flower.flowering_months.split(","),
-            'description': flower.description,
-        }
+        if flower.name == "rhododendron":
+            raise Exception("Rhododendron causes a crash! Congratulations, you found a bug.")
+        else:
+            result = {
+                'name': flower.name,
+                'flowering_months': flower.flowering_months.split(","),
+                'description': flower.description,
+            }
 
         opentracing.tracer.active_span.log_kv(result)
         return json.dumps(result)
