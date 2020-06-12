@@ -8,6 +8,14 @@ Bee Friendly
  Size of garden: 
 Dropdown ( Please select one ,  Windowbox ,  Balcony ,  Small < 15 m2 ,  Medium < 50 m2 ,  Large < 100 m2 ,  Extra Large > 100 m2 )
  Check all the flowers that are blooming: 
+ Azalea 
+ Daisy 
+ Forsythia 
+ Giant Daisy 
+ Lilac 
+ Peony 
+ Rhododendron 
+ Strawberry 
 Button ' Submit '
 Your score: unknown
 
@@ -18,4 +26,4 @@ Name: ===  ===
 Email: 
 Button ' Submit '
 Hello, Dr. Charles Darwin! On the origin of species is my favourite!
- client-id: 8969 
+ client-id: 2412 

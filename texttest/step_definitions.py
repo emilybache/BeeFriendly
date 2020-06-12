@@ -23,6 +23,7 @@ def setup(url):
 
     driver = webdriver.Chrome(desired_capabilities=d)
     driver.get(url)
+    print_html_page("start_page")
 
 
 def print_html_page(page_name):
@@ -62,11 +63,25 @@ def wait_for_garden_quizz_response():
     )
 
 
+def complete_garden_quizz(size, flowers):
+    select_garden_size(size)
+    select_flowers(flowers)
+    submit_garden_quizz()
+    wait_for_garden_quizz_response()
+
+
+def sign_up_for_newsletter(name, email):
+    enter_contact_details(name, email)
+    submit_newsletter()
+    wait_for_newsletter_response()
+
+
 def enter_contact_details(name, email):
     name_field = driver.find_element_by_id("newsletter_name")
     name_field.send_keys(name)
     email_field = driver.find_element_by_id("newsletter_email")
     email_field.send_keys(email)
+
 
 def submit_newsletter():
     submit_button = driver.find_element_by_id("newsletter_submit")
@@ -80,4 +95,5 @@ def wait_for_newsletter_response():
 
 
 def close():
+    print_html_page("end_page")
     driver.quit()
