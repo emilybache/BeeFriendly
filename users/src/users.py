@@ -20,18 +20,19 @@ def get_person_http(name):
     with flask_to_scope(flask_tracer, request) as scope:
         person = Person.get(name)
         if person is None:
+            if name in ["Neonicotinoid", "Insecticide", "DDT"]:
+                raise Exception(f"{name}s are not kind to bees.")
             person = Person()
             person.name = name
-        opentracing.tracer.active_span.log_kv({
+        else:
+            person.description += " is my favourite!"
+        response = {
             'name': person.name,
             'title': person.title,
             'description': person.description,
-        })
-        return json.dumps({
-            'name': person.name,
-            'title': person.title,
-            'description': person.description,
-        })
+        }
+        opentracing.tracer.active_span.log_kv(response)
+        return json.dumps(response)
 
 
 if __name__ == "__main__":

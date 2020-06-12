@@ -100,7 +100,7 @@
                 this.loading = true
                 var garden_data = {'selected_garden_size': this.garden_sizes.selected_garden_size,
                                    'selected_flowers': this.checkedFlowers}
-                var jaeger_baggage = {'jaeger-baggage': 'session=' + this.clientId + ',request=garden_quizz' + this.getRequestID()}
+                var jaeger_baggage = {}
 
                 console.log("garden flowers: ")
                 console.log(garden_data.selected_flowers)
