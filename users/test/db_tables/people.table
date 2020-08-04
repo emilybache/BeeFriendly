@@ -1,0 +1,32 @@
+ROW:0
+   description: Species Plantarum
+   name: Carl Linnaeus
+   title: Prof.
+ROW:1
+   description: On the origin of species
+   name: Charles Darwin
+   title: Dr.
+ROW:2
+   description: The Social Behavior of the Bees
+   name: Charles Duncan Michener
+   title: Dr.
+ROW:3
+   description: Bumblebees: Their Behaviour and Ecology
+   name: Dave Goulson
+   title: Prof.
+ROW:4
+   description: The Bumble-Bee's Religion
+   name: Emily Dickinson
+   title: Ms.
+ROW:5
+   description: The Dancing Bees: An Account of the Life and Senses of the Honey Bee
+   name: Karl von Frisch
+   title: Dr.
+ROW:6
+   description: Flight of the Bumblebee
+   name: Nikolai Rimsky-Korsakov
+   title: Mr.
+ROW:7
+   description: Pygmephorus lutterloughae
+   name: Sophie Lutterlough
+   title: Mrs.
