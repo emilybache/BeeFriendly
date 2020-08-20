@@ -34,7 +34,7 @@ def format_greeting(name, title, description):
             greeting += title + ' '
         greeting += name + '!'
         if description:
-            greeting += ' ' + description + " is my favourite!"
+            greeting += ' ' + description
         return greeting
 
 
