@@ -26,7 +26,7 @@ Then open a browser on localhost:8080
 
 There are several python flask applications, named:
 
-- flower_service
+- flowers
 - garden_scorer
 - greeting
 - newsletter
