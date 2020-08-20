@@ -25,7 +25,7 @@ def get_person_http(name):
             person = Person()
             person.name = name
         else:
-            person.description += " is my favourite!"
+            person.description
         response = {
             'name': person.name,
             'title': person.title,
