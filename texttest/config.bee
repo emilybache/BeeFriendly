@@ -25,3 +25,5 @@ end_page:python3 ${TEXTTEST_HOME}/texttest/html2ascii/html2ascii.py
 [run_dependent_text]
 start_page:client-id
 end_page:client-id
+start_page:\.[^.]+(\.jpg){REPLACE \1}
+end_page:\.[^.]+(\.jpg){REPLACE \1}
