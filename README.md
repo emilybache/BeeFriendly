@@ -47,8 +47,14 @@ Download and run jaeger using docker:
     	-p 14268:14268 \
     	jaegertracing/all-in-one:1.6
 
-Alternatively, download jaeger binaries from [jaeger website](https://www.jaegertracing.io/download/).
-Start the jaeger-all-in-one binary.
+Alternatively, download jaeger binaries from [jaeger website](https://www.jaegertracing.io/download/). Unpack them and
+link them under /usr/local/bin:
+
+    sudo tar xvzf jaeger-1.26.0-linux-amd64.tar.gz  -C /opt/
+    cd /usr/local/bin
+    ln -s /opt/jaeger-1.26.0-linux-amd64/jaeger-all-in-one .
+    
+Start the jaeger-all-in-one binary then navigate to the [jaeger application](http://localhost:16686/) 
 
 ## databases
 
@@ -70,14 +76,16 @@ For each one:
 
 ## Testing it
 
-When everything is started you should be able to open a browser on [http://localhost:8080](http://localhost:8080) and use the application. You should be able to see tracing in [jaeger](http://localhost:16686/).
-You can also run the automated texttests. Open texttest in the same folder as this README:
+When everything is started you should be able to open a browser on [http://localhost:8080](http://localhost:8080) and use the application. 
+You should be able to see tracing in [jaeger](http://localhost:16686/).
+
+Before you can run texttest you will need to install [chrome driver](https://sites.google.com/chromium.org/driver/)
+You will also need to install html2ascii from [uitext](https://github.com/texttest/uitext). Clone that repo then 
+copy or softlink the script html2ascii.py under texttest/html2ascii/
+
+Open texttest in the same folder as this README:
 
     texttest
     
 Before the tests will pass you will need to start all the services.
-
-## 3rd party software
-
-This program bundles the tool 'html2ascii' which is released under the GNU Lesser General Public License v2.1. For more information see [the github page](https://github.com/texttest/html2ascii). It is included under the 'texttest' subdirectory.
 

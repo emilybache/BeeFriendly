@@ -6,3 +6,5 @@ PyMySQL
 tornado==5.1.1
 opentracing-instrumentation
 Flask-OpenTracing
+Flask-Cors
+selenium
