@@ -6,11 +6,8 @@ import TheWelcome from "./components/TheWelcome.vue";
 <template>
   <header>
     <img
-      alt="Vue logo"
-      class="logo"
-      src="./assets/logo.svg"
-      width="125"
-      height="125"
+      alt="Bee Friendly banner"
+      src="./assets/azalea_banner.jpg"
     />
 
     <div class="wrapper">
