@@ -17,9 +17,9 @@ This is a Vue.js application. First install the needed npm modules:
 	
 Then start the server:
 
-	npm run serve
+	npm run dev
 
-Then open a browser on localhost:8080
+Then open a browser on localhost:3000
 	
 
 ## Garden Scorer, Users etc

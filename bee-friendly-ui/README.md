@@ -1,4 +1,4 @@
-# bee-friendly-ui-2
+# bee-friendly-ui
 
 This template should help get you started developing with Vue 3 in Vite.
 
