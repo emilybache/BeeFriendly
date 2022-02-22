@@ -12,5 +12,5 @@ def run_client(url):
 
 
 if __name__ == "__main__":
-    url = "http://localhost:8080/"
+    url = "http://localhost:3000/"
     run_client(url)
