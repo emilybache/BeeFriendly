@@ -1,6 +1,7 @@
 <script setup>
 import HelloWorld from "./components/HelloWorld.vue";
 import TheWelcome from "./components/TheWelcome.vue";
+import NewsletterSignup from "./components/NewsletterSignup.vue";
 </script>
 
 <template>
@@ -9,14 +10,12 @@ import TheWelcome from "./components/TheWelcome.vue";
       alt="Bee Friendly banner"
       src="./assets/azalea_banner.jpg"
     />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
   </header>
 
   <main>
-    <TheWelcome />
+    <h1 class="mt-4">Bee Friendly</h1>
+    We all need more flowers and pretty insects in our lives. Use this page to assess how best to help our small furry flying friends.
+    <NewsletterSignup />
   </main>
 </template>
 
