@@ -2,6 +2,7 @@
 import HelloWorld from "./components/HelloWorld.vue";
 import TheWelcome from "./components/TheWelcome.vue";
 import NewsletterSignup from "./components/NewsletterSignup.vue";
+import GardenQuizz from "./components/GardenQuizz.vue";
 </script>
 
 <template>
@@ -15,6 +16,7 @@ import NewsletterSignup from "./components/NewsletterSignup.vue";
   <main>
     <h1 class="mt-4">Bee Friendly</h1>
     We all need more flowers and pretty insects in our lives. Use this page to assess how best to help our small furry flying friends.
+    <GardenQuizz />
     <NewsletterSignup />
   </main>
 </template>
