@@ -131,7 +131,7 @@
                 return this.lastRequestID
             },
             getImageUrl(flower) {
-                return '@/assets/' + flower.name + ".jpg"
+                return '/assets/' + flower.name + ".jpg"
             },
         },
         computed: {
@@ -161,5 +161,11 @@
     }
     .flowerCheckbox:checked + .flowerLabel {
         border: solid 5px #00f;
+    }
+    .d-inline{
+        display: inline;
+    }
+    .ml-2 {
+        margin-left: 2rem;
     }
 </style>

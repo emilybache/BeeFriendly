@@ -4,28 +4,32 @@ import GardenQuizz from "./components/GardenQuizz.vue";
 </script>
 
 <template>
-  <header>
+  <header class="container">
     <img
       alt="Bee Friendly banner"
-      src="./assets/azalea_banner.jpg"
+      src="../public/assets/azalea_banner.jpg"
     />
   </header>
 
   <main>
-    <h1 class="mt-4">Bee Friendly</h1>
-    We all need more flowers and pretty insects in our lives. Use this page to assess how best to help our small furry flying friends.
+    <div class="container">
+      <h1 class="mt-4">Bee Friendly</h1>
+      We all need more flowers and pretty insects in our lives. Use this page to assess how best to help our small furry flying friends.
+    </div>
     <GardenQuizz />
     <NewsletterSignup />
   </main>
 </template>
 
 <style>
-@import "./assets/base.css";
+@import "../public/assets/base.css";
 
-#app {
+.container {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
+  padding-left: 2rem;
+  padding-bottom: 2rem;
+  padding-right: 2rem;
 
   font-weight: normal;
 }
@@ -34,50 +38,11 @@ header {
   line-height: 1.5;
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-a,
-.green {
-  text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
-}
-
 @media (hover: hover) {
   a:hover {
     background-color: hsla(160, 100%, 37%, 0.2);
   }
 }
 
-@media (min-width: 1024px) {
-  body {
-    display: flex;
-    place-items: center;
-  }
 
-  #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
-  }
-
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-}
 </style>
