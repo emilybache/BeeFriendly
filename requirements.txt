@@ -3,7 +3,7 @@ opentracing
 jaeger-client
 sqlalchemy
 PyMySQL
-tornado==6.3.2
+tornado==6.3.3
 opentracing-instrumentation
 Flask-OpenTracing
 Flask-Cors
